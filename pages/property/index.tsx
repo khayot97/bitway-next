@@ -77,7 +77,6 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 
 			// execution: getPropertiesRefetch
 			await getPropertiesRefetch({ input: initialInput });
-
 			await sweetTopSmallSuccessAlert('success: ', 800);
 		} catch (err: any) {
 			console.log('ERROR, likePropertyHandler: ', err.message);
