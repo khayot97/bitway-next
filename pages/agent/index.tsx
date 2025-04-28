@@ -113,16 +113,14 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 			if (!id) return;
 			if (!user._id) throw new Error(Messages.error2);
 
-			// execution: likeTargetMember Mutation
 			await likeTargetMember({
 				variables: { input: id },
 			});
 
-			// execution: getPropertiesRefetch
 			await getAgentsRefetch({ input: searchFilter });
 			await sweetTopSmallSuccessAlert('success: ', 800);
 		} catch (err: any) {
-			console.log('ERROR, likePropertyHandler: ', err.message);
+			console.log('ERROR, likeMemberHandler: ', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};

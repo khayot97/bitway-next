@@ -86,7 +86,7 @@ const Join: NextPage = () => {
 									<input
 										type="text"
 										placeholder={'Enter Nickname'}
-										onChange={(e) => handleInput('nick', e.target.value)}
+										onChange={(e: any) => handleInput('nick', e.target.value)}
 										required={true}
 										onKeyDown={(event) => {
 											if (event.key == 'Enter' && loginView) doLogin();
@@ -99,7 +99,7 @@ const Join: NextPage = () => {
 									<input
 										type="text"
 										placeholder={'Enter Password'}
-										onChange={(e) => handleInput('password', e.target.value)}
+										onChange={(e: any) => handleInput('password', e.target.value)}
 										required={true}
 										onKeyDown={(event) => {
 											if (event.key == 'Enter' && loginView) doLogin();
@@ -113,7 +113,7 @@ const Join: NextPage = () => {
 										<input
 											type="text"
 											placeholder={'Enter Phone'}
-											onChange={(e) => handleInput('phone', e.target.value)}
+											onChange={(e: any) => handleInput('phone', e.target.value)}
 											required={true}
 											onKeyDown={(event) => {
 												if (event.key == 'Enter') doSignUp();

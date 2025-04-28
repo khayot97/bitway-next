@@ -31,28 +31,28 @@ const InquiryArticles: NextPage = (props: any) => {
 						<Box component={'div'}>
 							<List className={'tab-menu'}>
 								<ListItem
-									// onClick={(e) => handleTabChange(e, 'all')}
+									// onClick={(e: any) => handleTabChange(e, 'all')}
 									value="all"
 									className={'all' === 'all' ? 'li on' : 'li'}
 								>
 									All (0)
 								</ListItem>
 								<ListItem
-									// onClick={(e) => handleTabChange(e, 'active')}
+									// onClick={(e: any) => handleTabChange(e, 'active')}
 									value="active"
 									className={'all' === 'all' ? 'li on' : 'li'}
 								>
 									Active (0)
 								</ListItem>
 								<ListItem
-									// onClick={(e) => handleTabChange(e, 'blocked')}
+									// onClick={(e: any) => handleTabChange(e, 'blocked')}
 									value="blocked"
 									className={'all' === 'all' ? 'li on' : 'li'}
 								>
 									Blocked (0)
 								</ListItem>
 								<ListItem
-									// onClick={(e) => handleTabChange(e, 'deleted')}
+									// onClick={(e: any) => handleTabChange(e, 'deleted')}
 									value="deleted"
 									className={'all' === 'all' ? 'li on' : 'li'}
 								>
@@ -68,7 +68,7 @@ const InquiryArticles: NextPage = (props: any) => {
 
 								<OutlinedInput
 									value={'searchInput'}
-									// onChange={(e) => handleInput(e.target.value)}
+									// onChange={(e: any) => handleInput(e.target.value)}
 									sx={{ width: '100%' }}
 									className={'search'}
 									placeholder="Search user name"
