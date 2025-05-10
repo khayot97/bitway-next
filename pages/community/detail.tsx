@@ -85,7 +85,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 	const {
 		loading: boardArticleLoading,
 		data: boardArticleData,
-		error: boardArticleError,
+		error: getBoardArticleError,
 		refetch: boardArticleRefetch,
 	} = useQuery(GET_BOARD_ARTICLE, {
 		fetchPolicy: 'network-only',
@@ -108,7 +108,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 		fetchPolicy: 'cache-and-network',
 		variables: { input: searchFilter },
 		notifyOnNetworkStatusChange: true,
-		onCompleted: (data: any) => {
+		onCompleted: (data: T) => {
 			setComments(data.getComments.list);
 			setTotal(data.getComments?.metaCounter?.[0]?.total || 0);
 		},
@@ -144,7 +144,7 @@ const CommunityDetail: NextPage = ({ initialInput, ...props }: T) => {
 			});
 
 			await boardArticleRefetch({ input: articleId });
-			await sweetTopSmallSuccessAlert('success: ', 800);
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 		} catch (err: any) {
 			console.log('ERROR, likeBoArticleHandler: ', err.message);
 			sweetMixinErrorAlert(err.message).then();

@@ -28,7 +28,7 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 		loading: boardArticlesLoading,
 		data: boardArticlesData,
 		error: getBoardArticlesError,
-		refetch: boardArticleRefetch,
+		refetch: boardArticlesRefetch,
 	} = useQuery(GET_BOARD_ARTICLES, {
 		fetchPolicy: 'network-only',
 		variables: { input: searchFilter },
@@ -59,8 +59,8 @@ const MemberArticles: NextPage = ({ initialInput, ...props }: any) => {
 				variables: { input: id },
 			});
 
-			await boardArticleRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('Success: ', 800);
+			await boardArticlesRefetch({ input: searchFilter });
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 		} catch (err: any) {
 			console.log('ERROR, likeArticleHandler: ', err.message);
 			sweetMixinErrorAlert(err.message).then();

@@ -73,7 +73,7 @@ const MyProfile: NextPage = ({ initialValues, ...props }: any) => {
 
 			return `${REACT_APP_API_URL}/${responseImage}`;
 		} catch (err) {
-			console.log('Error, uploadImage:', err);
+			console.log('ERROR, uploadImage:', err);
 		}
 	};
 
@@ -86,7 +86,7 @@ const MyProfile: NextPage = ({ initialValues, ...props }: any) => {
 				variables: { input: updateData },
 			});
 
-			//@ts-ignore
+			// @ts-ignore
 			const jwtToken = result.data.updateMember?.accessToken;
 			await updateStorage({ jwtToken });
 			updateUserInfo(result.data.updateMember?.accessToken);

@@ -39,10 +39,11 @@ const MemberFollowings = (props: MemberFollowingsProps) => {
 	} = useQuery(GET_MEMBER_FOLLOWINGS, {
 		fetchPolicy: 'network-only',
 		variables: { input: followInquiry },
+		skip: !followInquiry?.search?.followerId,
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setMemberFollowings(data?.setMemberFollowings?.list);
-			setTotal(data?.setMemberFollowings?.metaCounter[0]?.total);
+			setMemberFollowings(data?.getMemberFollowings?.list);
+			setTotal(data?.getMemberFollowings?.metaCounter[0]?.total);
 		},
 	});
 

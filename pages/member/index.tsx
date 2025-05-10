@@ -58,10 +58,10 @@ const MemberPage: NextPage = () => {
 				variables: { input: id },
 			});
 
-			await sweetTopSmallSuccessAlert('Followed: ', 800);
+			await sweetTopSmallSuccessAlert('Followed!', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
-			sweetErrorHandling(err.message).then();
+			sweetErrorHandling(err).then();
 		}
 	};
 
@@ -74,10 +74,10 @@ const MemberPage: NextPage = () => {
 				variables: { input: id },
 			});
 
-			await sweetTopSmallSuccessAlert('Unfollowed: ', 800);
+			await sweetTopSmallSuccessAlert('Unfollowed!', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
-			sweetErrorHandling(err.message).then();
+			sweetErrorHandling(err).then();
 		}
 	};
 
@@ -90,7 +90,7 @@ const MemberPage: NextPage = () => {
 				variables: { input: id },
 			});
 
-			await sweetTopSmallSuccessAlert('Success: ', 800);
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
 			console.log('ERROR, likeMemberHandler: ', err.message);

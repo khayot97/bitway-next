@@ -55,7 +55,7 @@ const TopProperties = (props: TopPropertiesProps) => {
 			// execution: getPropertiesRefetch
 			await getPropertiesRefetch({ input: initialInput });
 
-			await sweetTopSmallSuccessAlert('success: ', 800);
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 		} catch (err: any) {
 			console.log('ERROR, likePropertyHandler: ', err.message);
 			sweetMixinErrorAlert(err.message).then();

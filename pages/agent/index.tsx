@@ -108,7 +108,7 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 		setCurrentPage(value);
 	};
 
-	const likeMemberHandler = async (user: T, id: string) => {
+	const likeMemberHandler = async (user: any, id: string) => {
 		try {
 			if (!id) return;
 			if (!user._id) throw new Error(Messages.error2);
@@ -118,7 +118,7 @@ const AgentList: NextPage = ({ initialInput, ...props }: any) => {
 			});
 
 			await getAgentsRefetch({ input: searchFilter });
-			await sweetTopSmallSuccessAlert('success: ', 800);
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 		} catch (err: any) {
 			console.log('ERROR, likeMemberHandler: ', err.message);
 			sweetMixinErrorAlert(err.message).then();

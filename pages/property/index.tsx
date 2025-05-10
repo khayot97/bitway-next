@@ -65,31 +65,10 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 		setCurrentPage(searchFilter.page === undefined ? 1 : searchFilter.page);
 	}, [router]);
 
-	const likePropertyHandler = async (user: T, id: string) => {
-		try {
-			if (!id) return;
-			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
-
-			// execution: likeTargetProperty Mutation
-			await likeTargetProperty({
-				variables: { input: id },
-			});
-
-			// execution: getPropertiesRefetch
-			await getPropertiesRefetch({ input: initialInput });
-			await sweetTopSmallSuccessAlert('success: ', 800);
-		} catch (err: any) {
-			console.log('ERROR, likePropertyHandler: ', err.message);
-			sweetMixinErrorAlert(err.message).then();
-		}
-	};
-
-	useEffect(() => {}, [searchFilter]);
-
 	useEffect(() => {
 		console.log('searchFilter:', searchFilter);
 		// getPropertiesRefetch({ input: searchFilter }).then();
-	}, [setSearchFilter]);
+	}, [searchFilter]);
 
 	/** HANDLERS **/
 	const handlePaginationChange = async (event: ChangeEvent<unknown>, value: number) => {
@@ -130,6 +109,25 @@ const PropertyList: NextPage = ({ initialInput, ...props }: any) => {
 		}
 		setSortingOpen(false);
 		setAnchorEl(null);
+	};
+
+	const likePropertyHandler = async (user: T, id: string) => {
+		try {
+			if (!id) return;
+			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
+
+			// execution: likeTargetProperty Mutation
+			await likeTargetProperty({
+				variables: { input: id },
+			});
+
+			// execution: getPropertiesRefetch
+			await getPropertiesRefetch({ input: initialInput });
+			await sweetTopSmallSuccessAlert('Success! ', 800);
+		} catch (err: any) {
+			console.log('ERROR, likePropertyHandler: ', err.message);
+			sweetMixinErrorAlert(err.message).then();
+		}
 	};
 
 	if (device === 'mobile') {

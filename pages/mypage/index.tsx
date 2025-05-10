@@ -47,33 +47,33 @@ const MyPage: NextPage = () => {
 	const subscribeHandler = async (id: string, refetch: any, query: any) => {
 		try {
 			console.log('id: ', id);
-			if (!id) return;
+			if (!id) throw new Error(Messages.error1);
 			if (!user._id) throw new Error(Messages.error2);
 
 			await subscribe({
 				variables: { input: id },
 			});
 
-			await sweetTopSmallSuccessAlert('subscribe: ', 800);
+			await sweetTopSmallSuccessAlert('Subscribed! ', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
-			sweetErrorHandling(err.message).then();
+			sweetErrorHandling(err).then();
 		}
 	};
 
 	const unsubscribeHandler = async (id: string, refetch: any, query: any) => {
 		try {
-			if (!id) throw new Error(Messages.error2);
+			if (!id) throw new Error(Messages.error1);
 			if (!user._id) throw new Error(Messages.error2);
 
 			await unsubscribe({
 				variables: { input: id },
 			});
 
-			await sweetTopSmallSuccessAlert('unsubscribe: ', 800);
+			await sweetTopSmallSuccessAlert('Unsubscribed! ', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
-			sweetErrorHandling(err.message).then();
+			sweetErrorHandling(err).then();
 		}
 	};
 
@@ -86,7 +86,7 @@ const MyPage: NextPage = () => {
 				variables: { input: id },
 			});
 
-			await sweetTopSmallSuccessAlert('Success: ', 800);
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 			await refetch({ input: query });
 		} catch (err: any) {
 			console.log('ERROR, likeMemberHandler: ', err.message);

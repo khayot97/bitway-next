@@ -172,7 +172,7 @@ const PropertyDetail: NextPage = ({ initialComment, ...props }: any) => {
 				},
 			});
 
-			await sweetTopSmallSuccessAlert('success: ', 800);
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 		} catch (err: any) {
 			console.log('ERROR, likePropertyHandler: ', err.message);
 			sweetMixinErrorAlert(err.message).then();

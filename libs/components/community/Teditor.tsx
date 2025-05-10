@@ -68,7 +68,7 @@ const TuiEditor = () => {
 
 			return `${REACT_APP_API_URL}/${responseImage}`;
 		} catch (err) {
-			console.log('Error, uploadImage:', err);
+			console.log('ERROR, uploadImage:', err);
 		}
 	};
 
@@ -163,6 +163,7 @@ const TuiEditor = () => {
 				ref={editorRef}
 				hooks={{
 					addImageBlobHook: async (image: any, callback: any) => {
+						console.log('image: ', image);
 						const uploadedImageURL = await uploadImage(image);
 						callback(uploadedImageURL);
 						return false;

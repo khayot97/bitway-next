@@ -45,7 +45,7 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 		setSearchCommunity({ ...searchCommunity, page: value });
 	};
 
-	const likeArticleHandler = async (e: any, user: T, id: string) => {
+	const likeBoArticleHandler = async (e: any, user: any, id: string) => {
 		try {
 			e.stopPropagination();
 			if (!id) return;
@@ -56,9 +56,9 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 			});
 
 			await boardArticlesRefetch({ input: searchCommunity });
-			await sweetTopSmallSuccessAlert('success: ', 800);
+			await sweetTopSmallSuccessAlert('Success! ', 800);
 		} catch (err: any) {
-			console.log('ERROR, likeArticleHandler: ', err.message);
+			console.log('ERROR, likeBoArticleHandler: ', err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
@@ -82,7 +82,7 @@ const MyArticles: NextPage = ({ initialInput, ...props }: T) => {
 									boardArticle={boardArticle}
 									key={boardArticle?._id}
 									size={'small'}
-									likeArticleHandler={likeArticleHandler}
+									likeArticleHandler={likeBoArticleHandler}
 								/>
 							);
 						})

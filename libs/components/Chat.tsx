@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Avatar, Box, Stack } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import Badge from '@mui/material/Badge';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreen';
 import MarkChatUnreadIcon from '@mui/icons-material/MarkChatUnread';
 import { useRouter } from 'next/router';
@@ -45,7 +44,7 @@ interface MessagePayload {
 
 interface InfoPayload {
 	event: string;
-	totalClient: number;
+	totalClients: number;
 	memberData: Member;
 	action: string;
 }
@@ -54,7 +53,6 @@ const Chat = () => {
 	const chatContentRef = useRef<HTMLDivElement>(null);
 	const [messagesList, setMessagesList] = useState<MessagePayload[]>([]);
 	const [onlineUsers, setOnlineUsers] = useState<number>(0);
-	const textInput = useRef(null);
 	const [messageInput, setMessageInput] = useState<string>('');
 	const [open, setOpen] = useState(false);
 	const [openButton, setOpenButton] = useState(false);
@@ -71,7 +69,7 @@ const Chat = () => {
 			switch (data.event) {
 				case 'info':
 					const newInfo: InfoPayload = data;
-					setOnlineUsers(newInfo.totalClient);
+					setOnlineUsers(newInfo.totalClients);
 					break;
 				case 'getMessages':
 					const list: MessagePayload[] = data.list;
@@ -124,8 +122,8 @@ const Chat = () => {
 		if (!messageInput) sweetErrorAlert(Messages.error4);
 		else {
 			socket.send(JSON.stringify({ event: 'message', data: messageInput }));
+			setMessageInput('');
 		}
-		setMessageInput('');
 	};
 
 	return (

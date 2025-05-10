@@ -43,8 +43,8 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 		variables: { input: communityInquiry },
 		notifyOnNetworkStatusChange: true,
 		onCompleted: (data: T) => {
-			setArticles(data?.getAllBoardArticleByAdmin?.list);
-			setArticleTotal(data?.getAllBoardArticleByAdmin?.metaCounter[0]?.total ?? 0);
+			setArticles(data?.getAllBoardArticlesByAdmin?.list);
+			setArticleTotal(data?.getAllBoardArticlesByAdmin?.metaCounter[0]?.total ?? 0);
 		},
 	});
 
@@ -56,14 +56,14 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 	/** HANDLERS **/
 	const changePageHandler = async (event: unknown, newPage: number) => {
 		communityInquiry.page = newPage + 1;
-		await getAllBoardArticlesByAdminRefetch({ input: communityInquiry }).then();
+		await getAllBoardArticlesByAdminRefetch({ input: communityInquiry });
 		setCommunityInquiry({ ...communityInquiry });
 	};
 
 	const changeRowsPerPageHandler = async (event: React.ChangeEvent<HTMLInputElement>) => {
 		communityInquiry.limit = parseInt(event.target.value, 10);
 		communityInquiry.page = 1;
-		await getAllBoardArticlesByAdminRefetch({ input: communityInquiry }).then();
+		await getAllBoardArticlesByAdminRefetch({ input: communityInquiry });
 		setCommunityInquiry({ ...communityInquiry });
 	};
 
@@ -127,7 +127,7 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 			});
 
 			menuIconCloseHandler();
-			await getAllBoardArticlesByAdminRefetch({ input: communityInquiry }).then();
+			await getAllBoardArticlesByAdminRefetch({ input: communityInquiry });
 		} catch (err: any) {
 			menuIconCloseHandler();
 			sweetErrorHandling(err).then();
@@ -141,7 +141,7 @@ const AdminCommunity: NextPage = ({ initialInquiry, ...props }: any) => {
 					variables: { input: id },
 				});
 
-				await getAllBoardArticlesByAdminRefetch({ input: communityInquiry }).then();
+				await getAllBoardArticlesByAdminRefetch({ input: communityInquiry });
 			}
 		} catch (err: any) {
 			sweetErrorHandling(err).then();

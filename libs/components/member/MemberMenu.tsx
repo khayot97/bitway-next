@@ -26,7 +26,7 @@ const MemberMenu = (props: MemberMenuProps) => {
 	const {
 		loading: getMemberLoading,
 		data: getMemberData,
-		error: getMembersError,
+		error: getMemberError,
 		refetch: getMemberRefetch,
 	} = useQuery(GET_MEMBER, {
 		fetchPolicy: 'network-only',
