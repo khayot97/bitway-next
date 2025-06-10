@@ -77,6 +77,8 @@ function createIsomorphicLink() {
 			uri: process.env.REACT_APP_API_GRAPHQL_URL,
 		});
 
+		console.log("GRAPHQL API-TEST:", process.env.REACT_APP_API_GRAPHQL_URL);
+
 		/* WEBSOCKET SUBSCRIPTION LINK */
 		const wsLink = new WebSocketLink({
 			uri: process.env.REACT_APP_API_WS ?? 'ws://127.0.0.1:3007',
@@ -137,6 +139,8 @@ export function initializeApollo(initialState = null) {
 export function useApollo(initialState: any) {
 	return useMemo(() => initializeApollo(initialState), [initialState]);
 }
+
+
 
 /**
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
