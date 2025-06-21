@@ -38,7 +38,7 @@ interface HeaderFilterProps {
 	initialInput: PropertiesInquiry;
 }
 
-const HeaderFilter = (props: HeaderFilterProps) => {
+const  HeaderFilter = (props: HeaderFilterProps) => {
 	const { initialInput } = props;
 	const device = useDeviceDetect();
 	const { t, i18n } = useTranslation('common');
